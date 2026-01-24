@@ -1,0 +1,551 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+/* Design Tokens & Variables */
+:root {
+    --bg-dark: #0a192f;
+    --bg-light: #112240;
+    --text-primary: #ccd6f6;
+    --text-secondary: #8892b0;
+    --accent-gold: #fbbf24;
+    --accent-teal: #64ffda;
+    --white: #ffffff;
+    --font-sans: 'Outfit', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+
+    --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Global Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Typography Utilities */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.75rem;
+    color: var(--white);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-gold);
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+/* Layout Containers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 100px 0;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 10px 0;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 1.1rem;
+    /* Increased from 0.9rem */
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+    position: relative;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.hero-text h4 {
+    color: var(--accent-gold);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    /* Reduced from 4.5rem */
+    margin-bottom: 15px;
+    color: var(--accent-gold);
+    /* Moved from inline HTML */
+    max-width: 650px;
+}
+
+.hero-text h3 {
+    font-size: 1.25rem;
+    /* Further reduced to fit single line */
+    color: var(--text-primary);
+    /* Brighter than bio, less than name */
+    margin-bottom: 25px;
+    max-width: 650px;
+    line-height: 1.4;
+    font-weight: 500;
+    /* Added weight for clarity */
+}
+
+.hero-text p {
+    max-width: 650px;
+    /* Matched width for justification */
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    text-align: justify;
+    /* Justify text block as requested */
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.hero-image {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-image::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-gold);
+    z-index: -1;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.hero-image:hover::after {
+    top: 10px;
+    left: 10px;
+}
+
+.hero-image img {
+    border-radius: 8px;
+    filter: grayscale(20%) contrast(1.1);
+    transition: var(--transition);
+    max-height: 500px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+}
+
+.hero-image:hover img {
+    filter: none;
+}
+
+/* About Section */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.key-skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.key-skills-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.key-skills-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+}
+
+/* Experience Section */
+.timeline {
+    position: relative;
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--bg-light);
+}
+
+.job-card {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    gap: 30px;
+}
+
+.job-content {
+    flex: 1;
+    /* Take remaining space */
+    min-width: 300px;
+}
+
+.job-image-container {
+    flex: 0 0 250px;
+    /* Fixed width for image container */
+    margin-top: 5px;
+    /* Align with top text */
+}
+
+/* On mobile, stack them */
+@media (max-width: 768px) {
+    .job-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .job-image-container {
+        flex: auto;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .job-image {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+.job-card::after {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    transition: var(--transition);
+}
+
+.job-card:hover::after {
+    transform: scale(1.5);
+}
+
+.job-header h4 {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 5px;
+}
+
+.job-company {
+    color: var(--accent-gold);
+    margin-bottom: 5px;
+    font-weight: 500;
+    display: block;
+}
+
+.job-duration {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-family: monospace;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.job-responsibilities li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.job-responsibilities li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+}
+
+.job-image-container {
+    margin-top: 20px;
+}
+
+.job-image {
+    max-width: 100%;
+    width: 100%;
+    /* Fill container */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    transition: var(--transition);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+    /* Consistent aspect ratio */
+}
+
+.job-image:hover {
+    transform: scale(1.02);
+}
+
+.job-image-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: rgba(17, 34, 64, 0.7);
+    border: 1px dashed var(--text-secondary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Skills Cards - Technical */
+.tech-skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.skill-card {
+    background: var(--bg-light);
+    padding: 20px;
+    border-radius: 4px;
+    transition: var(--transition);
+    cursor: default;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+.skill-card h4 {
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+/* Awards Section Specifics */
+.awards .job-company {
+    color: var(--text-primary);
+    /* Differentiate from Gold header */
+    display: block;
+    /* Ensure it wraps if needed */
+    margin-bottom: 5px;
+}
+
+/* Education Section */
+.education-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* Contact / Footer */
+.contact-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.contact-icon:hover {
+    color: var(--accent-gold);
+}
+
+footer {
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-text p {
+        margin: 0 auto 30px;
+    }
+
+    .hero-image {
+        max-width: 400px;
+        margin: 40px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .nav-links {
+        display: none;
+        /* simple hide for V1, would want mobile menu normally */
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .job-card {
+        padding-left: 50px;
+    }
+
+    .job-card::after {
+        left: 17px;
+    }
+}
